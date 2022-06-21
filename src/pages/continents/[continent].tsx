@@ -28,7 +28,7 @@ const Continent = ({ continent }: ContinentProps) => {
 
       <Flex w="100%" h="70%" marginTop={5}>
         <Image
-          src={`url(${continent.bannerImage})`}
+          src={continent.bannerImage}
           alt="Banner"
           w="100%"
           h="100%"
@@ -78,11 +78,16 @@ const Continent = ({ continent }: ContinentProps) => {
           marginLeft="60px"
           marginTop={5}
         >
-          <CityCard />
-          <CityCard />
-          <CityCard />
-          <CityCard />
-          <CityCard />
+          {continent.mostPopularCities.map((city, index) => (
+            <CityCard 
+             key={index}
+             name={city.cityName}
+             image={city.cityImage}
+             cityName={city.cityName}
+             cityImage={city.cityImage}
+             countryName={city.countryName}
+            />
+          ))}
         </Flex>
       </Flex>
     </Flex>
@@ -101,11 +106,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 
   const response = await api.get(`/continents?slug=${continent}`);
-  console.log(response)
+  const continentInfos: ContinentTypes = response.data[0]
 
   return {
     props: {
-      continent: response.data
+      continent: continentInfos
     },
   };
 };
