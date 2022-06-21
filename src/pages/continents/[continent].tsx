@@ -15,6 +15,11 @@ import { CityCard } from "../../components/CityCard";
 import { Header } from "../../components/Header";
 import { ContinentProps, ContinentTypes } from "../../interfaces/types";
 import { api } from "../../services/api";
+import { ParsedUrlQuery } from "querystring";
+
+interface GetStaticPropsParams extends ParsedUrlQuery {
+  continent: string
+}
 
 const Continent = ({ continent }: ContinentProps) => {
   return (
@@ -92,9 +97,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { continent } = params;
+  const { continent } = params as GetStaticPropsParams;
+
 
   const response = await api.get(`/continents?slug=${continent}`);
+  console.log(response)
 
   return {
     props: {
