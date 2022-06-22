@@ -26,7 +26,7 @@ const Continent = ({ continent }: ContinentProps) => {
     <Flex direction="column" h="100vh" align="center">
       <Header />
 
-      <Flex w="100%" h="70%" marginTop={5}>
+      <Flex w="100%" h="660px" marginTop={5}>
         <Image
           src={continent.bannerImage}
           alt="Banner"

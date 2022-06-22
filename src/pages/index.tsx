@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Flex direction="column" h="100vh">
+    <Flex direction="column" h="100%">
       <Stack spacing={14}>
         <Header />
 
@@ -43,7 +43,9 @@ const Home = () => {
           </Text>
         </Flex>
 
-        <Slider />
+        <Flex w="100%" justify="center" align="center">
+          <Slider />
+        </Flex>
       </Stack>
     </Flex>
   );
