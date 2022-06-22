@@ -1,14 +1,36 @@
+import { useEffect, useState } from "react";
+
 import { Flex } from "@chakra-ui/react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard, Zoom } from "swiper";
-import { SliderItem } from "./SliderItem";
 
-import data from "../../../db.json";
+import { ContinentSliderTypes } from "../../interfaces/types";
+import { SliderItem } from "./SliderItem";
+import { api } from "../../services/api";
 
 export const Slider = () => {
+  const [continent, setContinent] = useState<ContinentSliderTypes[]>([]);
+
+  useEffect(() => {
+    api
+      .get("/continents")
+      .then((response) => setContinent(response.data))
+      .catch(() => {
+        alert("Ocorreu um erro!");
+      });
+  }, []);
+
   return (
-    <Flex w="100%" h={["250px","450px"]} maxW="1240px" mx="auto" mb={["5","10"]} justify="center" align="center">
+    <Flex
+      w="100%"
+      h={["250px", "450px"]}
+      maxW="1240px"
+      mx="auto"
+      mb={["5", "10"]}
+      justify="center"
+      align="center"
+    >
       <Swiper
         slidesPerView={1}
         cssMode={true}
@@ -23,13 +45,13 @@ export const Slider = () => {
         }}
         style={{ width: "100%", flex: "1", height: "100%" }}
       >
-        {data.continents.map((continent, index) => (
+        {continent.map((cont, index) => (
           <SwiperSlide key={index}>
             <SliderItem
-              title={continent.name}
-              info={continent.info}
-              imageUrl={continent.bannerImage}
-              slug={continent.slug}
+              title={cont.name}
+              info={cont.info}
+              imageUrl={cont.bannerImage}
+              slug={cont.slug}
             />
           </SwiperSlide>
         ))}

@@ -1,15 +1,8 @@
 import { Divider, Flex, HStack, Image, Stack, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
-// import Image from "next/image"
 import { Header } from "../components/Header";
 import { Slider } from "../components/Slider";
-import { api } from "../services/api";
 
 const Home = () => {
-  useEffect(() => {
-    api.get("/continents").then((response) => console.log(response.data));
-  }, []);
-
   return (
     <Flex direction="column" h="100%">
       <Stack spacing={14}>

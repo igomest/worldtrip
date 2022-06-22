@@ -13,6 +13,13 @@ export type ContinentTypes = {
         countryCode: string;
     }]
 }
+
+export type ContinentSliderTypes = {
+    slug: string;
+    name: string;
+    info: string;
+    bannerImage: string;
+}
 export interface ContinentProps {
     continent: ContinentTypes
 }

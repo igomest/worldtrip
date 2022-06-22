@@ -5,3 +5,10 @@ export interface CityCardProps {
     countryName: string;
     cityImage: string;
 }
+
+export interface SliderItemProps {
+    title: string;
+    info: string;
+    imageUrl: string;
+    slug: string;
+  }

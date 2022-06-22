@@ -1,12 +1,7 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { SliderItemProps } from "../../interfaces/props";
 
-interface SliderItemProps {
-  title: string;
-  info: string;
-  imageUrl: string;
-  slug: string;
-}
 
 export const SliderItem = ({
   title,
