@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard, Zoom } from "swiper";
 import { SliderItem } from "./SliderItem";
 
-import data from "../../../server.json";
+import data from "../../../db.json";
 
 export const Slider = () => {
   return (
